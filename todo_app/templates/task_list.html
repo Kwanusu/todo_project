@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Task List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    
+        <h1>Task List</h1>
+        <ul>
+            {% for task in tasks %}
+               <li>
+                  {{task.title}} - {% if task.completed %} Completed {% else %} Not Completed 
+                  <a href= "{% url 'update_task' task.pk %}">Edit</a>
+                  <a href= "{% url 'delete_task' task.pk %}">Delete</a>
+               </li>
+            {% endfor %}   
+        </ul>
+        <a href="{% url 'add_task' %}">Add a new task</a>
+        <script src="" async defer></script>
+    </body>
+</html>
