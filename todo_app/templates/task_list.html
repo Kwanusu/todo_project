@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Task List</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-    
-        <h1>Task List</h1>
-        <ul>
-            {% for task in tasks %}
-               <li>
-                  {{task.title}} - {% if task.completed %} Completed {% else %} Not Completed 
-                  <a href= "{% url 'update_task' task.pk %}">Edit</a>
-                  <a href= "{% url 'delete_task' task.pk %}">Delete</a>
-               </li>
-            {% endfor %}   
-        </ul>
-        <a href="{% url 'add_task' %}">Add a new task</a>
-        <script src="" async defer></script>
-    </body>
-</html>
+<!-- tasks/templates/tasks/task_list.html -->
+{% extends "base.html" %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-4">Task List</h1>
+    <ul class="list-disc pl-5">
+        {% for task in tasks %}
+            <li class="mb-2">
+                <span class="{% if task.completed %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ task.title }} - {% if task.completed %} Completed {% else %} Not Completed {% endif %}
+                </span>
+                <a href="{% url 'update_task' task.pk %}" class="text-blue-500 hover:underline ml-2">Edit</a>
+                <a href="{% url 'delete_task' task.pk %}" class="text-red-500 hover:underline ml-2">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_task' %}" class="text-blue-500 hover:underline mt-4 block">Add a new task</a>
+</div>
+{% endblock %}

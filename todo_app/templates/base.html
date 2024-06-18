@@ -1,0 +1,20 @@
+{% comment %} load static files here {% endcomment %}
+{% comment %} {% load static %} {% endcomment %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My College{% endblock %}</title>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'styles.css'%}"> {% endcomment %}
+    <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+<body>
+    {% comment %} template inheritance extended the navbar {% endcomment %}
+    {% include "navbar.html" %}
+    
+    {% block content %}
+    <!-- Content specific to child templates will be inserted here -->
+    {% endblock %}
+    
+    <!-- Common footer content goes here -->
+</body>
+</html>

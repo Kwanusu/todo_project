@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Delete Task</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>Delete Task</h1>
-        <p>Are you sure you want to delete "{{ task.title }}"?</p>
-        <form method='post'>
-            {% csrf_token %}
-            <button type= "submit">Yes, delete</button>
-        </form>
-        <a href="{% url 'task_list' %}">Back to task list</a>
-    </body>
-</html>
+<!-- tasks/templates/tasks/delete_task.html -->
+{% extends "base.html" %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-4">Delete Task</h1>
+    <p>Are you sure you want to delete "{{ task.title }}"?</p>
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Yes, delete</button>
+    </form>
+    <a href="{% url 'task_list' %}" class="text-blue-500 hover:underline mt-4 block">Back to task list</a>
+</div>
+{% endblock %}
